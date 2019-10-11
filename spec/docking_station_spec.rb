@@ -36,5 +36,11 @@ describe "DockingStation" do
     #assert
     expect(result).to eq("No bikes left")
   end
+
+  it "should not take more bikes than it can dock" do
+    dock = DockingStation.new
+
+    dock.dock_bikes(Bike.new)
+    expect { dock.dock_bikes Bike.new }.to raise_error "Docking station full"
+  end
 end
-#
